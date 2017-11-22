@@ -39,10 +39,10 @@ def dc_from_middle(turtle, pos_delta, angle_delta, level, dist = 10):
 bob = turtle.Turtle()
 bob.speed(0)
 bob.left(180)
-bob._tracer(0,0)
-# bob.tracer(0,0)
+bob.hideturtle()
+# bob._tracer(0,0)
 
-dc_from_beginning(bob, 16, 1)
+dc_from_beginning(bob, 9, 10)
 
 # turtle.update()
 turtle.done()
