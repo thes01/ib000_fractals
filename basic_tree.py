@@ -1,38 +1,28 @@
+""" Basic tree fractal drawing script """
+
 import turtle
 from random import randint
 
-def do_tree(turtle, length: int, angle = 45, multiplier = 10):
-    turtle.forward(length * multiplier)
+def do_tree(my_turtle, length: int, angle=45, multiplier=10, max_randomise=0):
+    """ Draw the tree """
+    my_turtle.forward(length * multiplier)
+
+    angle_shift = randint(-max_randomise, max_randomise)
 
     if length >= 1:
-        turtle.left(angle)
-        do_tree(turtle, length - 1, angle, multiplier)
-        turtle.right(2 * angle)
-        do_tree(turtle, length - 1, angle, multiplier)
-        turtle.left(angle)
+        my_turtle.left(angle)
+        do_tree(my_turtle, length - 1, angle, multiplier, max_randomise)
+        my_turtle.right(2 * (angle + angle_shift))
+        do_tree(my_turtle, length - 1, angle, multiplier, max_randomise)
+        my_turtle.left(angle + angle_shift)
 
-    turtle.backward(length * multiplier)
-
-def do_randomised_tree(turtle, length: int, angle = 45, multiplier = 10):
-    turtle.forward(length * multiplier)
-
-    angle_shift = randint(-15,15)
-
-    if length >= 1:
-        turtle.left(angle + angle_shift)
-        do_randomised_tree(turtle, length - 1, angle, multiplier)
-        turtle.right(2 * (angle + angle_shift))
-        do_randomised_tree(turtle, length - 1, angle, multiplier)
-        turtle.left(angle + angle_shift)
-
-    turtle.backward(length * multiplier)
+    my_turtle.backward(length * multiplier)
 
 
-bob = turtle.Turtle()
-bob._tracer(0,0)
-bob.speed(0)
-bob.left(90)
+foo = turtle.Turtle()
+foo.speed(0)
+foo.left(90)
 
-do_randomised_tree(bob, 10, angle=20, multiplier = 5)
+do_tree(foo, 10, angle=20, multiplier=5)
 
 turtle.done()
