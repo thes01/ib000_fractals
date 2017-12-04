@@ -13,6 +13,7 @@ def make_tuple(arr):
     """ Convert the numpy array to a tuple (to be a dwg.line argument). """
     return (float(arr[0]), float(arr[1]))
 
+
 def do_cross(svg, start_point: np.ndarray, end_point: np.ndarray, iteration):
     """ Draw the cross """
     delta = end_point - start_point

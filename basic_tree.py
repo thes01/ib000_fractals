@@ -3,6 +3,7 @@
 import turtle
 from random import randint
 
+
 def do_tree(my_turtle, length: int, angle=45, multiplier=10, max_randomise=0):
     """ Draw the tree """
     my_turtle.forward(length * multiplier)
